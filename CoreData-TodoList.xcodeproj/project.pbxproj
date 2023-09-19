@@ -15,6 +15,7 @@
 		C39345F52AB8A3B0005DF1D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39345F32AB8A3B0005DF1D3 /* LaunchScreen.storyboard */; };
 		C39345FD2AB967A1005DF1D3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39345FC2AB967A1005DF1D3 /* HomeViewController.swift */; };
 		C39345FF2AB967FC005DF1D3 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39345FE2AB967FC005DF1D3 /* ListVC.swift */; };
+		C39346012AB9B058005DF1D3 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39346002AB9B058005DF1D3 /* ListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C39345F62AB8A3B0005DF1D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C39345FC2AB967A1005DF1D3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C39345FE2AB967FC005DF1D3 /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		C39346002AB9B058005DF1D3 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				C39345E92AB8A3AF005DF1D3 /* ViewController.swift */,
 				C39345FC2AB967A1005DF1D3 /* HomeViewController.swift */,
 				C39345FE2AB967FC005DF1D3 /* ListVC.swift */,
+				C39346002AB9B058005DF1D3 /* ListCell.swift */,
 				C39345F12AB8A3B0005DF1D3 /* Assets.xcassets */,
 				C39345F32AB8A3B0005DF1D3 /* LaunchScreen.storyboard */,
 				C39345F62AB8A3B0005DF1D3 /* Info.plist */,
@@ -146,6 +149,7 @@
 				C39345EA2AB8A3AF005DF1D3 /* ViewController.swift in Sources */,
 				C39345E62AB8A3AF005DF1D3 /* AppDelegate.swift in Sources */,
 				C39345F02AB8A3AF005DF1D3 /* CoreData_TodoList.xcdatamodeld in Sources */,
+				C39346012AB9B058005DF1D3 /* ListCell.swift in Sources */,
 				C39345FF2AB967FC005DF1D3 /* ListVC.swift in Sources */,
 				C39345FD2AB967A1005DF1D3 /* HomeViewController.swift in Sources */,
 				C39345E82AB8A3AF005DF1D3 /* SceneDelegate.swift in Sources */,
