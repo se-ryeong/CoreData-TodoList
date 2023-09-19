@@ -14,7 +14,7 @@ class ListCell: UITableViewCell {
     let title : UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "제발 좀 떠라"
+        title.text = ""
         title.font = UIFont.systemFont(ofSize: 15)
         title.textColor = .black
         
@@ -38,7 +38,8 @@ class ListCell: UITableViewCell {
             title.topAnchor.constraint(equalTo: topAnchor),
             title.bottomAnchor.constraint(equalTo: bottomAnchor),
             title.trailingAnchor.constraint(equalTo: trailingAnchor),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor)
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            title.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
