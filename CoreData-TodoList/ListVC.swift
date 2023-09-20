@@ -27,7 +27,6 @@ final class ListVC: UIViewController {
 
     //데이터를 읽어올 메소드 - fetch(코어 데이터에서 레코드를 읽어ㄴ오는 과정)
     func fetch() -> [NSManagedObject] {
-
         // 1.앱 델리게이트 객체 참조
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -69,6 +68,27 @@ final class ListVC: UIViewController {
         
     }
     
+    //데이터 삭제
+    func delete(object: NSManagedObject) -> Bool {
+        // 1. 앱 델리게이트 객체 참조
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        // 2. 관리 객체 컨텍스트 참조
+        let context = appDelegate.persistentContainer.viewContext
+        
+        // 3. 컨텍스트로부터 해당 객체 삭제
+        context.delete(object)
+        
+        // 4. 영구 저장소에 커밋한다.
+        do {
+            try context.save()
+            return true
+        } catch {
+            context.rollback()
+            return false
+        }
+    }
+    
     //데이터 저장 버튼에 대한 액션 메소드
     @objc func add(_ sender: Any) {
         let alert = UIAlertController(title: "할 일 추가", message: nil, preferredStyle: .alert)
@@ -105,6 +125,7 @@ final class ListVC: UIViewController {
         
         self.navigationItem.rightBarButtonItem = addBtn
     }
+    
 }
 
 extension ListVC {
@@ -149,5 +170,16 @@ extension ListVC: UITableViewDataSource {
 extension ListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //삭제할 대상 객체
+        let object = self.list[indexPath.row]
+        
+        if self.delete(object: object) {
+            //코어 데이터에서 삭제되고 나면 배열 목록과 테이블 뷰의 행도 삭제
+            self.list.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
