@@ -129,7 +129,7 @@ final class ListVC: UIViewController {
             }
             
             if self.save(title: title) == true {
-               // self.tableView.reloadData() ???????
+               self.tableView.reloadData()
                 
             }
         })
@@ -195,21 +195,6 @@ extension ListVC: UITableViewDataSource {
 extension ListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //삭제할 대상 객체
-        let object = self.list[indexPath.row]
-        
-        if self.delete(object: object) {
-            //코어 데이터에서 삭제되고 나면 배열 목록과 테이블 뷰의 행도 삭제
-            self.list.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
         // 1.선택된 행에 해당하는 데이터 가져오기
         let object = self.list[indexPath.row]
         let title = object.value(forKey: "title") as? String
@@ -235,5 +220,18 @@ extension ListVC: UITableViewDelegate {
         self.present(alert, animated: false)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //삭제할 대상 객체
+        let object = self.list[indexPath.row]
+        
+        if self.delete(object: object) {
+            //코어 데이터에서 삭제되고 나면 배열 목록과 테이블 뷰의 행도 삭제
+            self.list.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+       
+    }
 }
