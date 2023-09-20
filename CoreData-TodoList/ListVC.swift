@@ -89,6 +89,31 @@ final class ListVC: UIViewController {
         }
     }
     
+    //데이터 수정
+    func edit(object: NSManagedObject, title: String, contents: String) -> Bool {
+        // 1. 앱 델리게이트 객체 참조
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        // 2. 관리 객체 컨텍스트 참조
+        let context = appDelegate.persistentContainer.viewContext
+        
+        // 3. 관리 객체의 값 수정
+        object.setValue(title, forKey: "title")
+//        object.setValue(createDate, forKey: "createDate")
+//        object.setValue(modifyDate, forKey: "modifyDate")
+//        object.setValue(isCompleted, forKey: "isCompleted")
+        
+        // 영구 저장소에 반영
+        do {
+            try context.save()
+            return true
+        } catch {
+            context.rollback()
+            return false
+        }
+    }
+    
+    
     //데이터 저장 버튼에 대한 액션 메소드
     @objc func add(_ sender: Any) {
         let alert = UIAlertController(title: "할 일 추가", message: nil, preferredStyle: .alert)
@@ -156,9 +181,9 @@ extension ListVC: UITableViewDataSource {
          let record = self.list[indexPath.row]
         //let id = record.value(forKey: "id") as? String
         let title = record.value(forKey: "title") as? String
-        //let createDate = record.value(forKey: "createDate") as? String
-        //let modifyDate = record.value(forKey: "modifyDate") as? String
-        //let isCompleted = record.value(forKey: "isCompleted") as? String
+        let createDate = record.value(forKey: "createDate") as? String
+        let modifyDate = record.value(forKey: "modifyDate") as? String
+        let isCompleted = record.value(forKey: "isCompleted") as? String
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier, for: indexPath) as! ListCell
         cell.title.text = title
@@ -182,4 +207,33 @@ extension ListVC: UITableViewDelegate {
             self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        // 1.선택된 행에 해당하는 데이터 가져오기
+        let object = self.list[indexPath.row]
+        let title = object.value(forKey: "title") as? String
+        //여기 더 추가하기 !!!!!! Date
+        
+        let alert = UIAlertController(title: "게시글 수정", message: nil, preferredStyle: .alert)
+        
+        // 2.입력 필드 추가(기존 값 입력)
+        alert.addTextField() { $0.text = title }
+        
+        // 3. 버튼 추가(Cancel & Save)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        alert.addAction(UIAlertAction(title: "Save", style: .default) {(_) in
+            guard let title = alert.textFields?.first?.text else {
+                return
+            }
+            
+            // 4. 값 수정 메소드 호출, 그 결과가 성공이면 테이블 뷰 리로드
+            if self.edit(object: object, title: title, contents: "" ) == true {
+                self.tableView.reloadData()
+            }
+        })
+        self.present(alert, animated: false)
+    }
+    
+    
 }

@@ -21,6 +21,7 @@ class ListCell: UITableViewCell {
         return title
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -39,7 +40,7 @@ class ListCell: UITableViewCell {
             title.bottomAnchor.constraint(equalTo: bottomAnchor),
             title.trailingAnchor.constraint(equalTo: trailingAnchor),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            title.heightAnchor.constraint(equalToConstant: 40)
+            title.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     

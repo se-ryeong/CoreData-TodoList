@@ -23,8 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        // UINavigationController(rootViewController: ListVC())
 
         
-       // window?.rootViewController = ViewController()
-        window?.rootViewController = UINavigationController(rootViewController: ListVC())
+        //window?.rootViewController = HomeViewController()
+        //window?.rootViewController = UINavigationController(rootViewController: ListVC())
+        
+        
+        let homeVC = HomeViewController()
+        let navController = UINavigationController(rootViewController: homeVC)
+        window?.rootViewController = navController
+        
+        
         window?.makeKeyAndVisible()
     }
 
