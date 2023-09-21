@@ -21,6 +21,24 @@ class ListCell: UITableViewCell {
         return title
     }()
     
+    let createDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 10)
+        
+        return label
+    }()
+    
+    let modifyDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 10)
+        
+        return label
+    }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,13 +52,24 @@ class ListCell: UITableViewCell {
     
     private func setupUI() {
         addSubview(title)
+        addSubview(createDateLabel)
+        addSubview(modifyDateLabel)
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor),
-            title.bottomAnchor.constraint(equalTo: bottomAnchor),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             title.trailingAnchor.constraint(equalTo: trailingAnchor),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            title.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            createDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            createDateLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
+        ])
+
+        NSLayoutConstraint.activate([
+            modifyDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            modifyDateLabel.topAnchor.constraint(equalTo: createDateLabel.bottomAnchor, constant: 4),
+            modifyDateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
     }
     

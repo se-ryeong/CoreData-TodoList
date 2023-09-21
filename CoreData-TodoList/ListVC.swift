@@ -21,6 +21,7 @@ final class ListVC: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ListCell.self, forCellReuseIdentifier: ListCell.identifier)
         tableView.backgroundColor = .white
+        tableView.rowHeight = UITableView.automaticDimension
         
         return tableView
     }()
@@ -44,6 +45,8 @@ final class ListVC: UIViewController {
     
     //데이터 저장 메소드
     func save(title: String) -> Bool {
+        let date = Date()
+        
         // 1. 앱 델리게이트 객체 참조
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -53,7 +56,7 @@ final class ListVC: UIViewController {
         // 3. 관리 객체 생성 & 값을 설정
         let object = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context)
         object.setValue(title, forKey: "title")
-//        object.setValue(createDate(), forKey: "createDate")
+        object.setValue(date, forKey: "createDate")
 //        object.setValue(modifyDate(), forKey: "modifyDate")
         
         // 4. 영구 저장소에 커밋되고 나면 list 프로퍼티에 추가한다.
@@ -91,6 +94,8 @@ final class ListVC: UIViewController {
     
     //데이터 수정
     func edit(object: NSManagedObject, title: String, contents: String) -> Bool {
+        let date = Date()
+        
         // 1. 앱 델리게이트 객체 참조
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -99,8 +104,7 @@ final class ListVC: UIViewController {
         
         // 3. 관리 객체의 값 수정
         object.setValue(title, forKey: "title")
-//        object.setValue(createDate, forKey: "createDate")
-//        object.setValue(modifyDate, forKey: "modifyDate")
+        object.setValue(date, forKey: "modifyDate")
 //        object.setValue(isCompleted, forKey: "isCompleted")
         
         // 영구 저장소에 반영
@@ -177,16 +181,27 @@ extension ListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
         //해당 데이터 가져오기
          let record = self.list[indexPath.row]
         //let id = record.value(forKey: "id") as? String
         let title = record.value(forKey: "title") as? String
-        let createDate = record.value(forKey: "createDate") as? String
-        let modifyDate = record.value(forKey: "modifyDate") as? String
+        let createDate = record.value(forKey: "createDate") as? Date
+        let modifyDate = record.value(forKey: "modifyDate") as? Date
         let isCompleted = record.value(forKey: "isCompleted") as? String
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier, for: indexPath) as! ListCell
         cell.title.text = title
+        
+        if let createDate {
+            cell.createDateLabel.text = "생성날짜: " + dateFormatter.string(from: createDate)
+        }
+        
+        if let modifyDate {
+            cell.modifyDateLabel.text = "수정날짜: " + dateFormatter.string(from: modifyDate)
+        }
         
         return cell
     }
