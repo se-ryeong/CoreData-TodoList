@@ -190,7 +190,7 @@ extension ListVC: UITableViewDataSource {
         let title = record.value(forKey: "title") as? String
         let createDate = record.value(forKey: "createDate") as? Date
         let modifyDate = record.value(forKey: "modifyDate") as? Date
-        let isCompleted = record.value(forKey: "isCompleted") as? String
+        let isCompleted = record.value(forKey: "isCompleted") as? Bool
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier, for: indexPath) as! ListCell
         cell.title.text = title

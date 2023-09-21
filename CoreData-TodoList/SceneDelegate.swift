@@ -24,9 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //window?.rootViewController = UINavigationController(rootViewController: ListVC())
         
-        //이거 세 줄 나중에 주석 풀기
-              let homeVC = HomeViewController()
-              let navController = UINavigationController(rootViewController: homeVC)
+        let homeVC = HomeViewController()
+        let navController = UINavigationController(rootViewController: homeVC)
         window?.rootViewController = navController
         
         //window?.rootViewController = ProfileDesignVC()

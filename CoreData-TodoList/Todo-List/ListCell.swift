@@ -25,7 +25,7 @@ class ListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
-        label.font = .systemFont(ofSize: 10)
+        label.font = .systemFont(ofSize: 11)
         
         return label
     }()
@@ -34,7 +34,7 @@ class ListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
-        label.font = .systemFont(ofSize: 10)
+        label.font = .systemFont(ofSize: 11)
         
         return label
     }()

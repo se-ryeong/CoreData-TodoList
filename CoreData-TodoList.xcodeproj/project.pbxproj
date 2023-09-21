@@ -66,13 +66,12 @@
 		C39345E42AB8A3AF005DF1D3 /* CoreData-TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				C39346082ABCAEB1005DF1D3 /* Home */,
+				C39346072ABCAE9D005DF1D3 /* Todo-List */,
 				C39346062ABC9756005DF1D3 /* Insta */,
 				C39345E52AB8A3AF005DF1D3 /* AppDelegate.swift */,
 				C39345E72AB8A3AF005DF1D3 /* SceneDelegate.swift */,
 				C39345E92AB8A3AF005DF1D3 /* ViewController.swift */,
-				C39345FC2AB967A1005DF1D3 /* HomeViewController.swift */,
-				C39345FE2AB967FC005DF1D3 /* ListVC.swift */,
-				C39346002AB9B058005DF1D3 /* ListCell.swift */,
 				C39345F12AB8A3B0005DF1D3 /* Assets.xcassets */,
 				C39345F32AB8A3B0005DF1D3 /* LaunchScreen.storyboard */,
 				C39345F62AB8A3B0005DF1D3 /* Info.plist */,
@@ -88,6 +87,23 @@
 				C39346022ABB362D005DF1D3 /* ProfileDesignVC.swift */,
 			);
 			path = Insta;
+			sourceTree = "<group>";
+		};
+		C39346072ABCAE9D005DF1D3 /* Todo-List */ = {
+			isa = PBXGroup;
+			children = (
+				C39345FE2AB967FC005DF1D3 /* ListVC.swift */,
+				C39346002AB9B058005DF1D3 /* ListCell.swift */,
+			);
+			path = "Todo-List";
+			sourceTree = "<group>";
+		};
+		C39346082ABCAEB1005DF1D3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C39345FC2AB967A1005DF1D3 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
