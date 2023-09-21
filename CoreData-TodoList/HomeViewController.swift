@@ -58,9 +58,7 @@ class HomeViewController: UIViewController {
     
     @objc func profilebuttonTapped() {
         let profileVC = ProfileDesignVC()
-        //profileVC.modalPresentationStyle = .fullScreen
+        profileVC.modalPresentationStyle = .fullScreen
         present(profileVC, animated: true, completion: nil)
-        
-        
     }
 }
