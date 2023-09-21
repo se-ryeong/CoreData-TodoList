@@ -17,6 +17,7 @@
 		C39345FF2AB967FC005DF1D3 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39345FE2AB967FC005DF1D3 /* ListVC.swift */; };
 		C39346012AB9B058005DF1D3 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39346002AB9B058005DF1D3 /* ListCell.swift */; };
 		C39346032ABB362D005DF1D3 /* ProfileDesignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39346022ABB362D005DF1D3 /* ProfileDesignVC.swift */; };
+		C39346052ABC899E005DF1D3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39346042ABC899E005DF1D3 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C39345FE2AB967FC005DF1D3 /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		C39346002AB9B058005DF1D3 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		C39346022ABB362D005DF1D3 /* ProfileDesignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignVC.swift; sourceTree = "<group>"; };
+		C39346042ABC899E005DF1D3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +66,11 @@
 		C39345E42AB8A3AF005DF1D3 /* CoreData-TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				C39346062ABC9756005DF1D3 /* Insta */,
 				C39345E52AB8A3AF005DF1D3 /* AppDelegate.swift */,
 				C39345E72AB8A3AF005DF1D3 /* SceneDelegate.swift */,
 				C39345E92AB8A3AF005DF1D3 /* ViewController.swift */,
 				C39345FC2AB967A1005DF1D3 /* HomeViewController.swift */,
-				C39346022ABB362D005DF1D3 /* ProfileDesignVC.swift */,
 				C39345FE2AB967FC005DF1D3 /* ListVC.swift */,
 				C39346002AB9B058005DF1D3 /* ListCell.swift */,
 				C39345F12AB8A3B0005DF1D3 /* Assets.xcassets */,
@@ -77,6 +79,15 @@
 				C39345EE2AB8A3AF005DF1D3 /* CoreData_TodoList.xcdatamodeld */,
 			);
 			path = "CoreData-TodoList";
+			sourceTree = "<group>";
+		};
+		C39346062ABC9756005DF1D3 /* Insta */ = {
+			isa = PBXGroup;
+			children = (
+				C39346042ABC899E005DF1D3 /* InfoView.swift */,
+				C39346022ABB362D005DF1D3 /* ProfileDesignVC.swift */,
+			);
+			path = Insta;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 				C39346032ABB362D005DF1D3 /* ProfileDesignVC.swift in Sources */,
 				C39345FF2AB967FC005DF1D3 /* ListVC.swift in Sources */,
 				C39345FD2AB967A1005DF1D3 /* HomeViewController.swift in Sources */,
+				C39346052ABC899E005DF1D3 /* InfoView.swift in Sources */,
 				C39345E82AB8A3AF005DF1D3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
