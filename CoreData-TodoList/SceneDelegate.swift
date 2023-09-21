@@ -21,15 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
        // UINavigationController(rootViewController: ListVC())
-
         
-        //window?.rootViewController = HomeViewController()
         //window?.rootViewController = UINavigationController(rootViewController: ListVC())
         
+        //이거 세 줄 나중에 주석 풀기
+//        let homeVC = HomeViewController()
+//        let navController = UINavigationController(rootViewController: homeVC)
+//        window?.rootViewController = navController
         
-        let homeVC = HomeViewController()
-        let navController = UINavigationController(rootViewController: homeVC)
-        window?.rootViewController = navController
+        window?.rootViewController = ProfileDesignVC()
         
         
         window?.makeKeyAndVisible()

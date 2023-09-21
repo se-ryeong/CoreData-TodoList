@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         view.backgroundColor = .white
+    
     }
     
     private func setupUI() {
@@ -57,6 +58,7 @@ class HomeViewController: UIViewController {
     
     @objc func profilebuttonTapped() {
         let profileVC = ProfileDesignVC()
+        //profileVC.modalPresentationStyle = .fullScreen
         present(profileVC, animated: true, completion: nil)
         
         
