@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ProfileDesignVC: UIViewController {
+class ProfileDesignVC: UIViewController{
+    let imageDatas = ["picture1","picture2","picture3","picture4", "picture5", "picture6", "picture7"]
+    
     let userIdLabel: UILabel = {
         let label = UILabel()
         label.text = "nabaecamp"
@@ -181,6 +183,16 @@ class ProfileDesignVC: UIViewController {
         return borderLine
     }()
     
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,10 +200,12 @@ class ProfileDesignVC: UIViewController {
         addSubViews()
         setUI()
         addTarget()
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     private func addSubViews() {
-        [userIdLabel,menuImageView,profile,username,userinfo,link,backButton,infoStackView,moreBtn,btnStackView,borderLine,gridBtn,gridBottomLine].forEach {
+        [userIdLabel, menuImageView, profile, username, userinfo, link, backButton, infoStackView, moreBtn, btnStackView, borderLine, gridBtn, gridBottomLine,  collectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -278,16 +292,49 @@ class ProfileDesignVC: UIViewController {
             gridBottomLine.trailingAnchor.constraint(equalTo: gridBtn.trailingAnchor),
             gridBottomLine.bottomAnchor.constraint(equalTo: gridBtn.bottomAnchor, constant: -1)
         ])
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: gridBottomLine.bottomAnchor, constant: 2),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        
+        ])
     }
     
     private func addTarget() {
         backButton.addTarget(self, action: #selector(didClickBackButton), for: .touchUpInside)
     }
+}
+
+extension ProfileDesignVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        imageDatas.count
+    }
     
-    // UITextViewDelegate를 준수하는 경우 사용자가 링크를 탭할 때 호출될 메서드
-//     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-//         // 사용자가 링크를 탭했을 때 웹 페이지를 여는 동작 추가
-//         UIApplication.shared.open(URL, options: [:], completionHandler: nil)
-//         return false // 기본 동작을 수행하지 않도록 false 반환
-//     }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.identifier, for: indexPath) as! ProfileCell
+        cell.feedImageView.image = UIImage(named: imageDatas[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension ProfileDesignVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth = collectionView.frame.width
+        
+        //cell간 2씩. 총 한 줄에 4만큼의 간격을 띄우니까 4를 빼줘야 함. 한 줄에 사진 3개니까 3으로 나눠줌
+        let itemWidth = (collectionViewWidth - 4) / 3
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2 //셀 간 간격
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
 }
