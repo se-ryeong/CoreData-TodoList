@@ -200,6 +200,7 @@ class ProfileDesignVC: UIViewController{
         addSubViews()
         setUI()
         addTarget()
+        configureNavigation()
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -228,7 +229,8 @@ class ProfileDesignVC: UIViewController{
         profile.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         NSLayoutConstraint.activate([
             profile.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            profile.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50)
+            profile.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10)
+            
         ])
         
         NSLayoutConstraint.activate([
@@ -256,7 +258,7 @@ class ProfileDesignVC: UIViewController{
         NSLayoutConstraint.activate([
             infoStackView.leadingAnchor.constraint(equalTo: profile.trailingAnchor, constant: 10),
             infoStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
-            infoStackView.topAnchor.constraint(equalTo: userIdLabel.bottomAnchor, constant: 50),
+            infoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
         ])
         
         NSLayoutConstraint.activate([
@@ -300,6 +302,12 @@ class ProfileDesignVC: UIViewController{
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         
         ])
+    }
+    
+    private func configureNavigation() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: menuImageView)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.titleView = userIdLabel
     }
     
     private func addTarget() {
