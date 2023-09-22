@@ -19,11 +19,10 @@ class TabBarController: UITabBarController {
         profileController.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Profile - Fill"), selectedImage: UIImage(named: "Profile - Fill"))
         
         viewControllers = [profileController]
-        TabbarApperance()
-
+        TabbarAppearance()
     }
     
-    func TabbarApperance() {
-        UITabBar.appearance().barTintColor = .black
+    func TabbarAppearance() {
+        UITabBar.appearance().tintColor = .black
     }
 }
